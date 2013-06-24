@@ -6,7 +6,7 @@
 #include <iostream>
 #include <vector>
 
-#include "MasonryCore.h"
+#include "MasonryNotForHuman.h"
 
 int main(int argc, const char * argv[])
 {
