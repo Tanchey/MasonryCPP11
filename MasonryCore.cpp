@@ -6,6 +6,7 @@
 #include "MasonryCore.h"
 #include <iterator>
 #include <algorithm>
+#include <assert.h>
 
 unsigned bottomInColumn (unsigned const col
                          , std::vector<DiscreteRect> const &rects)
@@ -42,6 +43,7 @@ unsigned freeYAtColumnForWidth (unsigned const col
 std::vector<unsigned> freePoints (unsigned const width
                                   , std::vector<unsigned> const &shape)
 {
+    assert(width <= shape.size());
     std::vector<unsigned> points = std::vector<unsigned> (shape.size() - width + 1);
     int i = 0;
     std::generate(points.begin(), points.end(), [&i, width, shape](){ return freeYAtColumnForWidth(i++, width, shape); });
@@ -52,6 +54,7 @@ std::vector<unsigned> freePoints (unsigned const width
 DiscreteRect findFirstGap (DiscreteRect const &rect
                            , std::vector<unsigned> const &shape)
 {
+    assert(rect.x + rect.width <= shape.size());
     auto firstGap = std::min_element(shape.begin() + rect.x, shape.begin() + rect.x + rect.width);
     return DiscreteRect(static_cast<unsigned>(std::distance(shape.begin(), firstGap))
                         , *firstGap
