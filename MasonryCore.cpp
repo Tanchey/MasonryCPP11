@@ -88,15 +88,14 @@ void eliminateGap (unsigned const gridWidth
     std::vector<DiscreteRect>::iterator topNeighbor = findTopNeighbor(gap, rects);
     if (topNeighbor != rects.end()) {
         topNeighbor->incHeight(gap.height);
-        rects.push_back(newRect);
     } else {
         std::vector<DiscreteRect>::iterator leftNeighbor = findLeftNeighbor(gap, rects);
         if (leftNeighbor == rects.end()) {
             throw "No neighbours for gap";
         }
         leftNeighbor->incWidth();
-        layoutIteration(gridWidth, rects, newRect);
     }
+    layoutIteration(gridWidth, rects, newRect);
 }
 
 void refine (unsigned const gridWidth
