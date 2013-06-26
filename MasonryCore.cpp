@@ -128,4 +128,11 @@ std::vector<DiscreteRect> masonry(unsigned const gridWidth, std::vector<Discrete
     return rects;
 }
 
+std::vector<DiscreteRect> masonrySmoothEdges(unsigned const gridWidth, std::vector<DiscreteRect> const &photos)
+{
+    std::vector<DiscreteRect> rects = masonry(gridWidth, photos);
+    layoutIteration(gridWidth, rects, DiscreteRect(gridWidth, 1));
+    rects.pop_back();
+    return rects;
+}
 

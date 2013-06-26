@@ -14,7 +14,7 @@
 
 std::vector<DiscreteRect> masonry(unsigned const gridWidth, std::vector<DiscreteRect> const &);
 
-void strangeAndUglyTests();
+std::vector<DiscreteRect> masonrySmoothEdges(unsigned const gridWidth, std::vector<DiscreteRect> const &photos);
 
 #endif /* defined(__Masonry__MasonryCore__) */
 

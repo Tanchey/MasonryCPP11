@@ -14,6 +14,8 @@
 
 std::vector<DiscreteRect> masonry(unsigned const gridWidth, std::vector<DiscreteRect> const &);
 
+std::vector<DiscreteRect> masonrySmoothEdges(unsigned const gridWidth, std::vector<DiscreteRect> const &photos);
+
 void strangeAndUglyTests();
 unsigned bottomInColumn (unsigned const col
                          , std::vector<DiscreteRect> const &rects);

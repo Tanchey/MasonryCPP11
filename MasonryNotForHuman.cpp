@@ -29,6 +29,12 @@ void strangeAndUglyTests()
     rectsForSomePhotos.push_back(DiscreteRect(0, 1, 2, 1));
     rectsForSomePhotos.push_back(DiscreteRect(0, 2, 1, 5));
     
+    std::vector<DiscreteRect> smoothRectsForSomePhotos = std::vector<DiscreteRect> ();
+    
+    smoothRectsForSomePhotos.push_back(DiscreteRect(0, 0, 2, 1));
+    smoothRectsForSomePhotos.push_back(DiscreteRect(0, 1, 2, 1));
+    smoothRectsForSomePhotos.push_back(DiscreteRect(0, 2, 2, 5));
+    
     assert(!DiscreteRect(3, 0, 2, 0).containsColumn(1));
     assert(!DiscreteRect(3, 0, 2, 0).containsColumn(2));
     assert(DiscreteRect(3, 0, 2, 0).containsColumn(3));
@@ -180,4 +186,9 @@ void strangeAndUglyTests()
         assert(std::equal(rects.begin(), rects.end(), masonry(2, rects).begin(),  [](DiscreteRect const &r1, DiscreteRect const &r2){ return r1 == r2; }));
     }
     assert(std::equal(rectsForSomePhotos.begin(), rectsForSomePhotos.end(), masonry(2, somePhotos).begin(), [](DiscreteRect const &r1, DiscreteRect const &r2){ return r1 == r2; }));
+    
+    assert(std::equal(smoothRectsForSomePhotos.begin()
+                      , smoothRectsForSomePhotos.end()
+                      , masonrySmoothEdges(2, somePhotos).begin(), [](DiscreteRect const &r1, DiscreteRect const &r2){ return r1 == r2; }));
+    
 }
