@@ -185,10 +185,30 @@ void strangeAndUglyTests()
         std::vector<DiscreteRect> rects = {DiscreteRect(0, 0, 1, 1)};
         assert(std::equal(rects.begin(), rects.end(), masonry(2, rects).begin(),  [](DiscreteRect const &r1, DiscreteRect const &r2){ return r1 == r2; }));
     }
+    {
+        std::vector<DiscreteRect> photos = {DiscreteRect(1, 3)
+        , DiscreteRect(1, 1)
+        , DiscreteRect(1, 1)
+        , DiscreteRect(3, 1)};
+        std::vector<DiscreteRect> rects = {DiscreteRect(0, 0, 1, 3)
+            , DiscreteRect(1, 0, 1, 3)
+            , DiscreteRect(2, 0, 1, 3)
+            , DiscreteRect(0, 3, 3, 1)};
+        assert(std::equal(rects.begin(), rects.end(), masonry(3, rects).begin(), [](DiscreteRect const &r1, DiscreteRect const &r2){ return r1 == r2; }));
+    }
     assert(std::equal(rectsForSomePhotos.begin(), rectsForSomePhotos.end(), masonry(2, somePhotos).begin(), [](DiscreteRect const &r1, DiscreteRect const &r2){ return r1 == r2; }));
     
     assert(std::equal(smoothRectsForSomePhotos.begin()
                       , smoothRectsForSomePhotos.end()
                       , masonrySmoothEdges(2, somePhotos).begin(), [](DiscreteRect const &r1, DiscreteRect const &r2){ return r1 == r2; }));
+    {
+        std::vector<DiscreteRect> photos = {DiscreteRect(1, 3)
+            , DiscreteRect(1, 1)
+            , DiscreteRect(1, 1)};
+        std::vector<DiscreteRect> rects = {DiscreteRect(0, 0, 1, 3)
+            , DiscreteRect(1, 0, 1, 3)
+            , DiscreteRect(2, 0, 1, 3)};
+        assert(std::equal(rects.begin(), rects.end(), masonrySmoothEdges(3, rects).begin(), [](DiscreteRect const &r1, DiscreteRect const &r2){ return r1 == r2; }));
+    }
     
 }
