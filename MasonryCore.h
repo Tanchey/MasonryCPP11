@@ -16,5 +16,7 @@ std::vector<DiscreteRect> masonry(unsigned const gridWidth, std::vector<Discrete
 
 std::vector<DiscreteRect> masonrySmoothEdges(unsigned const gridWidth, std::vector<DiscreteRect> const &photos);
 
+unsigned minHeight(unsigned const gridWidth, std::vector<DiscreteRect> &rects);
+
 #endif /* defined(__Masonry__MasonryCore__) */
 

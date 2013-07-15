@@ -138,3 +138,12 @@ std::vector<DiscreteRect> masonrySmoothEdges(unsigned const gridWidth, std::vect
     return rects;
 }
 
+unsigned minHeight(unsigned const gridWidth
+                   , std::vector<DiscreteRect> &rects)
+{
+    std::vector<unsigned> shape = lowerEdgeShape(gridWidth, rects);
+    std::vector<unsigned> freePlaces = freePoints(1, shape);
+    auto place = std::min_element(freePlaces.begin(), freePlaces.end());
+    return *place;
+}
+
